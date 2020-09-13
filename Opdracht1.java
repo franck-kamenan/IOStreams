@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.DosFileAttributes;
+import java.nio.file.attribute.PosixFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Opdracht1 {
 
         Path destDir = Paths.get("c:/Data");
         Path destFile = destDir.resolve("test.txt");
+
         List<String> content = new ArrayList<>();
         content.add("Some lines");
         content.add(" are added.");
@@ -30,8 +33,7 @@ public class Opdracht1 {
             if (Files.notExists(destFile)) {
                 Files.createFile(destFile);
                 System.out.println("Files is created!");
-            }
-            else {
+            } else {
                 System.out.println("File Already Exists.");
             }
         } catch (IOException e) {
@@ -51,7 +53,6 @@ public class Opdracht1 {
             attributes = Files.readAttributes(destFile, DosFileAttributes.class);
 
         } catch (IOException e) {
-
             e.printStackTrace();
         }
 
@@ -62,9 +63,10 @@ public class Opdracht1 {
             System.out.println("System: " + attributes.isSystem());
             System.out.println("Creation time: " + attributes.creationTime());
             System.out.println("Directory: " + attributes.isDirectory());
-            System.out.println("Regular File: " + attributes.isRegularFile());
+            System.out.println("File: " + attributes.isRegularFile());
         }
 
+        content.forEach(System.out::println);
 
     }
 
