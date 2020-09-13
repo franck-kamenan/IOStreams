@@ -45,11 +45,26 @@ public class Opdracht1 {
             e.printStackTrace();
         }
 
+        DosFileAttributes attributes = null;
+
         try {
-            Files.readAttributes(destFile, DosFileAttributes.class);
+            attributes = Files.readAttributes(destFile, DosFileAttributes.class);
+
         } catch (IOException e) {
+
             e.printStackTrace();
         }
+
+        if (attributes != null){
+            System.out.println("Hidden: " + attributes.isHidden());
+            System.out.println("Archive: " + attributes.isArchive());
+            System.out.println("Read only: " + attributes.isReadOnly());
+            System.out.println("System: " + attributes.isSystem());
+            System.out.println("Creation time: " + attributes.creationTime());
+            System.out.println("Directory: " + attributes.isDirectory());
+            System.out.println("Regular File: " + attributes.isRegularFile());
+        }
+
 
     }
 
