@@ -13,17 +13,12 @@ public class Opdracht1B {
         Path destDir = Paths.get("c:/Data");
         Path destFile = destDir.resolve("test.txt");
 
-        Stream<String> lines = null;
-
-        try {
-            lines = Files.lines(destFile);
+        try (Stream<String> stream = Files.lines(destFile)) {
+            stream.forEach((System.out::println));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        assert lines != null;
-        lines.forEach(System.out::println);
-        lines.close();
 
     }
 
