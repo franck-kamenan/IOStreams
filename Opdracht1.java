@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.DosFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,14 @@ public class Opdracht1 {
         }
 
         try {
-            Files.write(destFile, content, Charset.defaultCharset(), StandardOpenOption.CREATE);
+            Files.write(destFile, content,
+                    Charset.defaultCharset(), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Files.readAttributes(destFile, DosFileAttributes.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
