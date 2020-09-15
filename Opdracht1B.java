@@ -14,12 +14,12 @@ public class Opdracht1B {
         Path destFile = destDir.resolve("test.txt");
 
         try (Stream<String> stream = Files.lines(destFile)) {
+
             stream.forEach((System.out::println));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
+        
     }
 
 }
