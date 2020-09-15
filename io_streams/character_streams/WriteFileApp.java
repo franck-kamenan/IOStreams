@@ -7,12 +7,13 @@ public class WriteFileApp {
 
     public static void main(String[] args) throws IOException {
 
-        final FileWriter fWriter = new FileWriter("MyTextFile.txt");
-
-        try(fWriter) {
+        try(FileWriter fWriter = new FileWriter("MyTextFile.txt");
+            FileWriter fileWriter = new FileWriter("SecondFile.txt");) {
 
             fWriter.write("The ");
             fWriter.write("other way!");
+
+            fileWriter.write("This is the second file.");
 
         } catch (IOException e) {
             e.printStackTrace();
